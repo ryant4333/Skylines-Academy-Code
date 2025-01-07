@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+  # The types of runners this will run on windows-latest
+    runs-on: ubuntu-latest
+
+    steps:
+      
