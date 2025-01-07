@@ -1,5 +1,9 @@
 name: CI
 
+env:
+  k8sclustername: 
+  resourceGroupName:
+  
 on:
   push:
     branches: [ master ]
@@ -12,4 +16,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      
+    - uses: actions/checkout@master
+
+    - uses: Azure/aks-set-context@v1
+      with:
+        creds:
+        cluster-name:
+        resource-group:
+    - uses: Azure/k8s-deploy@v1
+      with:
+        manifests: |
+          KubernetesManifest/nginx.yml
